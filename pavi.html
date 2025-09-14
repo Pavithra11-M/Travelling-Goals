@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Goals</title>
+  <style>
+    /* Basic Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center/cover;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Input Section */
+    #add-goal {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #add-goal input {
+      padding: 10px;
+      width: 60%;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #add-goal button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9800;
+      color: white;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    #add-goal button:hover {
+      background-color: #e68900;
+    }
+
+    /* Goals List */
+    #goals-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .goal-card {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .goal-card.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .goal-card button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .complete-btn {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      margin-left: 5px;
+    }
+
+    /* Table Section */
+    table {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      border: 1px solid #fff;
+      padding: 10px;
+    }
+
+    table th {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌍 My Travel Goals</h1>
+    <p>Track the places you dream to visit!</p>
+  </header>
+
+  <main>
+    <!-- Add Goal Section -->
+    <section id="add-goal">
+      <input type="text" id="goal-input" placeholder="Enter destination...">
+      <button onclick="addGoal()">Add Goal</button>
+    </section>
+
+    <!-- Goals List -->
+    <section id="goals-list">
+      <!-- Travel goals will appear here -->
+    </section>
+
+    <!-- 🌍 Top 5 Visiting Countries Section -->
+    <section id="top-countries">
+      <h2 style="text-align:center; margin-top:40px;">Top 5 Most Visited Countries in the World</h2>
+      <p style="text-align:center; font-size:1.1rem;">
+        Here are the top 5 countries travelers love to visit, along with their most famous attractions:
+      </p>
+
+      <table>
+        <tr>
+          <th>S.No</th>
+          <th>Country</th>
+          <th>Most Visited Place</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>France</td>
+          <td>Eiffel Tower, Paris</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Spain</td>
+          <td>Sagrada Familia, Barcelona</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>United States</td>
+          <td>Times Square, New York</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>China</td>
+          <td>The Great Wall of China</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Italy</td>
+          <td>Colosseum, Rome</td>
+        </tr>
+      </table>
+
+      <p style="text-align:center; font-size:1.1rem; margin-top:20px;">
+        These destinations are famous worldwide and attract millions of tourists each year.  
+        Visiting them is often considered a dream goal for many travelers 🌍✨
+      </p>
+    </section>
+
+    <!-- 🌍 Top 5 Travelling Agencies Section -->
+    <section id="top-agencies">
+      <h2 style="text-align:center; margin-top:40px;">Top 5 Travelling Agencies</h2>
+      <p style="text-align:center; font-size:1.1rem;">
+        These agencies are popular worldwide and provide the best travel services ✈️🏝️
+      </p>
+
+      <table>
+        <tr>
+          <th>S.No</th>
+          <th>Agency Name</th>
+          <th>Website</th>
+          <th>Click Here</th>
+          <th>Sign In Process</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Expedia</td>
+          <td>www.expedia.com</td>
+          <td><a href="https://www.expedia.com" target="_blank" style="color: #ff9800; font-weight:bold;">Visit</a></td>
+          <td>Click <b>Sign In</b> → Create Account → Enter name, email, password → Or use Google/Apple login.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Booking.com</td>
+          <td>www.booking.com</td>
+          <td><a href="https://www.booking.com" target="_blank" style="color: #ff9800; font-weight:bold;">Visit</a></td>
+          <td>Click <b>Register</b> → Enter email + password → Or sign in with Google.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>TripAdvisor</td>
+          <td>www.tripadvisor.com</td>
+          <td><a href="https://www.tripadvisor.com" target="_blank" style="color: #ff9800; font-weight:bold;">Visit</a></td>
+          <td>Click <b>Join</b> → Sign up with Email/Google/Facebook → Verify account.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>MakeMyTrip</td>
+          <td>www.makemytrip.com</td>
+          <td><a href="https://www.makemytrip.com" target="_blank" style="color: #ff9800; font-weight:bold;">Visit</a></td>
+          <td>Click <b>Login/Create Account</b> → Enter mobile/email → OTP verification → Done.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Yatra</td>
+          <td>www.yatra.com</td>
+          <td><a href="https://www.yatra.com" target="_blank" style="color: #ff9800; font-weight:bold;">Visit</a></td>
+          <td>Click <b>Sign In</b> → New user? Choose Sign Up → Enter mobile/email → OTP verification.</td>
+        </tr>
+      </table>
+
+      <p style="text-align:center; font-size:1.1rem; margin-top:20px;">
+        These agencies help travelers book flights, hotels, and tour packages with ease 🌍✨
+      </p>
+    </section>
+
+    <!-- 🌍 Popular Travel Agencies (3 Key Points) -->
+    <section id="agency-points">
+      <h2 style="text-align:center; margin-top:40px;">✈️ Why these Travel Agencies</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:20px;">
+        
+        <!-- Expedia -->
+        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
+          <h3>🌍 Expedia</h3>
+          <ul>
+            <li>One of the world’s largest travel booking companies.</li>
+            <li>Provides flights, hotels, car rentals, and holiday packages.</li>
+            <li>Famous for discounts and bundle deals.</li>
+          </ul>
+        </div>
+
+        <!-- Booking.com -->
+        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
+          <h3>🏨 Booking.com</h3>
+          <ul>
+            <li>Specializes in hotel, homestay, and apartment bookings worldwide.</li>
+            <li>Offers flexible booking and free cancellation on many stays.</li>
+            <li>Easy-to-use platform with millions of accommodation options.</li>
+          </ul>
+        </div>
+
+        <!-- MakeMyTrip -->
+        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
+          <h3>🌏 MakeMyTrip</h3>
+          <ul>
+            <li>India’s leading travel agency for flights, trains, buses, and hotels.</li>
+            <li>Popular for budget-friendly holiday packages and offers.</li>
+            <li>Strong customer support and wide domestic coverage.</li>
+          </ul>
+        </div>
+
+        <!-- TripAdvisor -->
+        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
+          <h3>🗺️ TripAdvisor</h3>
+          <ul>
+            <li>World’s largest travel review and rating website.</li>
+            <li>Helps travelers choose hotels, restaurants, and attractions.</li>
+            <li>Provides traveler photos and experiences for better decisions.</li>
+          </ul>
+        </div>
+
+        <!-- Yatra -->
+        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
+          <h3>🛫 Yatra</h3>
+          <ul>
+            <li>Indian travel agency for flights, trains, buses, and hotels.</li>
+            <li>Known for discounts and seasonal offers.</li>
+            <li>Special services for students, senior citizens, and corporate travelers.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ for travel lovers</p>
+  </footer>
+
+  <script>
+    const goalInput = document.getElementById("goal-input");
+    const goalsList = document.getElementById("goals-list");
+
+    // Function to add goal
+    function addGoal() {
+      const goalText = goalInput.value.trim();
+      if (goalText === "") {
+        alert("Please enter a destination!");
+        return;
+      }
+
+      const goalCard = document.createElement("div");
+      goalCard.classList.add("goal-card");
+
+      goalCard.innerHTML = `
+        <h3>${goalText}</h3>
+        <button class="complete-btn" onclick="completeGoal(this)">Mark as Visited</button>
+        <button class="delete-btn" onclick="deleteGoal(this)">Delete</button>
+      `;
+
+      goalsList.appendChild(goalCard);
+      goalInput.value = "";
+    }
+
+    // Function to mark goal as completed
+    function completeGoal(button) {
+      const card = button.parentElement;
+      card.classList.toggle("completed");
+    }
+
+    // Function to delete goal
+    function deleteGoal(button) {
+      const card = button.parentElement;
+      goalsList.removeChild(card);
+    }
+  </script>
+</body>
+</html>
